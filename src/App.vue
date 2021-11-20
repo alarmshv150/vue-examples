@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <button @click="decrease">decrease</button>
-    <!-- interpolation -->
     <span>Counter:{{ counter }}</span>
     <button @click="increase">increase</button>
   </div>
@@ -16,10 +15,10 @@ export default {
   },
   methods: {
     decrease() {
-      this.counter - 1;
+      this.counter -= 1;
     },
     increase() {
-      this.counter + 1;
+      this.counter += 1;
     },
   },
 };
