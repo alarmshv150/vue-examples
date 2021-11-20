@@ -1,6 +1,9 @@
 <template>
   <div class="app">
-    <input v-model="inputValue" type="text" />
+    <input v-model.number="firstInputValue" type="text" />
+    <input v-model.trim="secondInputValue" type="text" />
+    <!-- default onchange event instead input -->
+    <input v-model.lazy="thirdInputValue" type="text" />
   </div>
 </template>
 
@@ -8,7 +11,9 @@
 export default {
   data() {
     return {
-      inputValue: "",
+      firstInputValue: "",
+      secondInputValue: "",
+      thirdInputValue: "",
     };
   },
 };
