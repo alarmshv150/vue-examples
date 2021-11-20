@@ -1,9 +1,8 @@
 <template>
   <div class="app">
-    <input v-model.number="firstInputValue" type="text" />
-    <input v-model.trim="secondInputValue" type="text" />
-    <!-- default onchange event instead input -->
-    <input v-model.lazy="thirdInputValue" type="text" />
+    <button @click="counter--">decrease</button>
+    <span>Counter:{{ counter }}</span>
+    <button @click="counter++">increase</button>
   </div>
 </template>
 
@@ -11,9 +10,7 @@
 export default {
   data() {
     return {
-      firstInputValue: "",
-      secondInputValue: "",
-      thirdInputValue: "",
+      counter: 0,
     };
   },
 };
@@ -29,3 +26,4 @@ export default {
   padding: 30px;
 }
 </style>
+
