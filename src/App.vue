@@ -3,10 +3,9 @@
     <button @click="decrease">decrease</button>
     <span>Counter:{{ counter }}</span>
     <button @click="increase">increase</button>
-
-    <div v-if="counter < 2">condition 1</div>
-    <div v-else-if="counter < 4">condition 2</div>
-    <div v-else>condition 3</div>
+    <!-- element remain in the DOM -->
+    <div v-show="counter < 0">condition 1</div>
+    <div v-show="counter > 0">condition 2</div>
   </div>
 </template>
 
