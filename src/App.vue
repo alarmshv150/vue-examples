@@ -1,10 +1,6 @@
 <template>
   <div class="app">
-    <input
-      :value="inputValue"
-      @input="inputValue = $event.target.value"
-      type="text"
-    />
+    <input v-model="inputValue" type="text" />
   </div>
 </template>
 
@@ -28,4 +24,3 @@ export default {
   padding: 30px;
 }
 </style>
-
