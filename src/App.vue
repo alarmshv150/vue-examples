@@ -1,6 +1,22 @@
 <template>
-  <div class="app"></div>
+  <div class="app">
+    <input
+      :value="inputValue"
+      @input="inputValue = $event.target.value"
+      type="text"
+    />
+  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      inputValue: "",
+    };
+  },
+};
+</script>
 
 <style>
 * {
@@ -9,6 +25,7 @@
   box-sizing: border-box;
 }
 .app {
-  padding: 20px;
+  padding: 30px;
 }
 </style>
+
