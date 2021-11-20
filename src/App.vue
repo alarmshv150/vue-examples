@@ -1,11 +1,8 @@
 <template>
   <div class="app">
-    <button @click="decrease">decrease</button>
-    <span>Counter:{{ counter }}</span>
-    <button @click="increase">increase</button>
-    <!-- element remain in the DOM -->
-    <div v-show="counter < 0">condition 1</div>
-    <div v-show="counter > 0">condition 2</div>
+    <div v-for="elem in list" :key="elem.id">
+      {{ elem.id }} - {{ elem.name }}
+    </div>
   </div>
 </template>
 
@@ -13,16 +10,12 @@
 export default {
   data() {
     return {
-      counter: 0,
+      list: [
+        { id: 1, name: "elem 1" },
+        { id: 2, name: "elem 2" },
+        { id: 3, name: "elem 3" },
+      ],
     };
-  },
-  methods: {
-    decrease() {
-      this.counter -= 1;
-    },
-    increase() {
-      this.counter += 1;
-    },
   },
 };
 </script>
