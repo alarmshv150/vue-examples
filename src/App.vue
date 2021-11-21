@@ -1,6 +1,7 @@
 <template>
   <div class="app">
-    <todo-form />
+    <!-- child component event listening -->
+    <todo-form @create="createTodo" />
     <todo-list :todos="todos" />
   </div>
 </template>
@@ -27,15 +28,9 @@ export default {
     };
   },
   methods: {
-    createTodo() {
-      const newTodo = {
-        id: Date.now(),
-        title: this.title,
-        completed: this.completed,
-      };
-      this.todos.push(newTodo);
-      this.title = "";
-      this.completed = "";
+    /* create new todo */
+    createTodo(todo) {
+      this.todos.push(todo);
     },
   },
 };

@@ -20,12 +20,6 @@ export default {
   methods: {
     createTodo() {
       this.todo.id = Date.now();
-      /* 
-      emit event in child component 
-      parameters:
-      1)name of event 
-      2)function arguments 
-      */
       this.$emit("create", this.todo);
       this.todo = {
         title: "",
