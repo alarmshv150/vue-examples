@@ -1,34 +1,21 @@
 <template>
   <div class="app">
-    <!-- prevent default browser behavior -->
-    <form @submit.prevent>
-      <h4>create todo</h4>
-      <!--model binding and input event handling-->
-      <input
-        :value="title"
-        @input="title = $event.target.value"
-        type="text"
-        placeholder="title"
-      />
-      <input
-        :value="completed"
-        @input="completed = $event.target.value"
-        type="text"
-        placeholder="completed"
-      />
-      <button @click="createTodo">create</button>
-    </form>
-    <h3>todos</h3>
-    <div v-for="todo in todos" :key="todo.id">
-      <h3>{{ todo.id }}</h3>
-      <div><strong>Title:</strong>{{ todo.title }}</div>
-      <div><strong>Completed:</strong>{{ todo.completed }}</div>
-    </div>
+    <todo-from />
+    <todo-list />
   </div>
 </template>
 
 <script>
+import TodoForm from "@/components/TodoForm";
+import TodoList from "@/components/TodoList";
+
 export default {
+  /*components registration */
+  components: {
+    TodoForm,
+    TodoList,
+  },
+
   data() {
     return {
       todos: [
@@ -51,14 +38,6 @@ export default {
       this.title = "";
       this.completed = "";
     },
-
-    /* input event handling
-    inputTitle(event) {
-      this.title = event.target.value;
-    },
-    inputComp(event) {
-      this.completed = event.target.value;
-    }, */
   },
 };
 </script>
@@ -73,4 +52,3 @@ export default {
   padding: 30px;
 }
 </style>
-
