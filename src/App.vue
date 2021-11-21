@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-    <!-- child component event listening -->
     <todo-form @create="createTodo" />
     <todo-list :todos="todos" />
   </div>
@@ -23,12 +22,9 @@ export default {
         { id: 1, title: "todo 2", completed: "false" },
         { id: 2, title: "todo 3", completed: "true" },
       ],
-      title: "",
-      completed: "",
     };
   },
   methods: {
-    /* create new todo */
     createTodo(todo) {
       this.todos.push(todo);
     },
