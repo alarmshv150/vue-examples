@@ -1,7 +1,6 @@
 <template>
   <div class="app">
     <todo-form />
-    <!-- missing required prop: "todos" without binding  -->
     <todo-list :todos="todos" />
   </div>
 </template>
