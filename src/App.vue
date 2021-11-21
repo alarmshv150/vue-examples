@@ -1,7 +1,8 @@
 <template>
   <div class="app">
-    <todo-from />
-    <todo-list />
+    <todo-form />
+    <!-- missing required prop: "todos" without binding  -->
+    <todo-list :todos="todos" />
   </div>
 </template>
 
@@ -10,7 +11,6 @@ import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
 
 export default {
-  /*components registration */
   components: {
     TodoForm,
     TodoList,
