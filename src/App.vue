@@ -50,13 +50,13 @@ export default {
     counter(newValue) {
       console.log(newValue);
     },
-    todos: {
+    list: {
       handler(newValue) {
         console.log(newValue);
       },
       deep: true,
     },
-    list: {
+    todos: {
       handler(newValue) {
         console.log(newValue);
       },
