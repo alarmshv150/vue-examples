@@ -1,6 +1,9 @@
 <template>
   <div class="app">
     <div>
+      <input v-model="user.address.street" type="text" />
+    </div>
+    <div>
       <h1>Counter:{{ counter }}</h1>
       <button @click="decrement">Decrement</button>
       <button @click="increment">Increment</button>
@@ -36,6 +39,12 @@ export default {
         { id: 1, title: "todo 2", completed: "false" },
         { id: 2, title: "todo 3", completed: "true" },
       ],
+      user: {
+        name: "alarmshv",
+        address: {
+          street: "",
+        },
+      },
     };
   },
   methods: {
@@ -45,6 +54,17 @@ export default {
   },
   watch: {
     todos: {
+      handler(newValue) {
+        console.log(newValue);
+      },
+      deep: true,
+    },
+    /* watch field */
+    "user.address.street"(newValue) {
+      console.log(newValue);
+    },
+    /* watch object */
+    user: {
       handler(newValue) {
         console.log(newValue);
       },
@@ -67,4 +87,3 @@ export default {
   padding: 30px;
 }
 </style>
-
