@@ -4,7 +4,6 @@
     <button @click="counter--">Decrement</button>
     <button @click="counter++">Increment</button>
 
-    <!-- incorrectLength() without computed -->
     <h1>The number of elements:{{ incorrectLength }}</h1>
     <div v-for="elem in list" :key="elem.id">{{ elem }}</div>
     <button @click="list.push(list.length + 1)">Add element</button>
@@ -41,23 +40,17 @@ export default {
       this.todos.push(todo);
     },
   },
-  /* called only with changing of the list length */
   computed: {
     incorrectLength() {
       console.log("called");
       return this.list.length + 1;
     },
   },
-
-  /* increment() {
-      this.counter++;
+  watch: {
+    counter(newValue) {
+      console.log(newValue);
     },
-    decrement() {
-      this.counter--;
-    },
-    addElement() {
-      this.list.push(this.list.length + 1);
-    }, */
+  },
 };
 </script>
 
