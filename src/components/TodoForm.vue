@@ -1,9 +1,15 @@
 <template>
   <form @submit.prevent>
     <h4>create todo</h4>
-    <input v-model="todo.title" type="text" placeholder="title" />
+    <input
+      ref="inputref"
+      v-model="todo.title"
+      type="text"
+      placeholder="title"
+    />
     <input v-model="todo.completed" type="text" placeholder="completed" />
     <button @click="createTodo">create</button>
+    <button @click="getRef">get element</button>
   </form>
 </template>
 
@@ -25,6 +31,10 @@ export default {
         title: "",
         completed: "",
       };
+    },
+    getRef() {
+      this.$refs.inputref.focus();
+      console.log(this.$refs.inputref);
     },
   },
 };
