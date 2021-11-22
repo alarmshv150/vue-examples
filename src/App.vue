@@ -1,8 +1,6 @@
 <template>
   <div class="app">
-    <div>
-      <input v-model="user.address.street" type="text" />
-    </div>
+    <child />
     <div>
       <h1>Counter:{{ counter }}</h1>
       <button @click="decrement">Decrement</button>
@@ -23,6 +21,7 @@
 <script>
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
+import Child from "@/components/Child";
 import CountMixin from "@/mixins/CountMixin";
 import ListMixin from "@/mixins/ListMixin";
 
@@ -31,6 +30,7 @@ export default {
   components: {
     TodoForm,
     TodoList,
+    Child,
   },
   data() {
     return {
@@ -47,6 +47,11 @@ export default {
       },
     };
   },
+  provide() {
+    return {
+      user: this.user,
+    };
+  },
   methods: {
     createTodo(todo) {
       this.todos.push(todo);
@@ -54,17 +59,6 @@ export default {
   },
   watch: {
     todos: {
-      handler(newValue) {
-        console.log(newValue);
-      },
-      deep: true,
-    },
-    /* watch field */
-    "user.address.street"(newValue) {
-      console.log(newValue);
-    },
-    /* watch object */
-    user: {
       handler(newValue) {
         console.log(newValue);
       },
@@ -87,3 +81,4 @@ export default {
   padding: 30px;
 }
 </style>
+
