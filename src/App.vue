@@ -1,7 +1,9 @@
 <template>
   <div class="app">
     <todo-form @create="createTodo" />
-    <todo-list :todos="todos" />
+    <div v-if="!isTodosLoading">
+      <todo-list :todos="todos" />
+    </div>
   </div>
 </template>
 
@@ -18,21 +20,34 @@ export default {
   data() {
     return {
       todos: [],
+      page: 1,
+      limit: 20,
+      total: 0,
+      isTodosLoading: false,
     };
   },
   methods: {
     createTodo(todo) {
       this.todos.push(todo);
     },
-    async fetchTodo() {
+    async fetchTodos() {
       try {
+        this.isTodosLoading = true;
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/todos"
+          "https://jsonplaceholder.typicode.com/todos",
+          {
+            params: {
+              _page: this.page,
+              _limit: this.limit,
+            },
+          }
         );
         this.todos = response.data;
+        this.total = Math.ceil(response.headers["x-total-count"] / this.limit);
       } catch (error) {
         console.log("error");
       } finally {
+        this.isTodosLoading = false;
       }
     },
   },
@@ -44,9 +59,8 @@ export default {
       deep: true,
     },
   },
-  /* life cycle methods for fetching API data */
   mounted() {
-    this.fetchTodo();
+    this.fetchTodos();
   },
 };
 </script>
