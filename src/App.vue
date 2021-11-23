@@ -1,9 +1,10 @@
 <template>
   <div class="app">
+    <h1>Page with todos</h1>
     <todo-form @create="createTodo" />
-    <div v-if="!isTodosLoading">
-      <todo-list :todos="todos" />
-    </div>
+    <todo-list :todos="todos" @remove="removeTodo" v-if="!isTodosLoading" />
+    <div v-else>Loading...</div>
+    <page-wrapper :total="total" :page="page" @change="changePage" />
   </div>
 </template>
 
@@ -11,11 +12,13 @@
 import axios from "axios";
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
+import PageWrapper from "@/components/PageWrapper";
 
 export default {
   components: {
     TodoForm,
     TodoList,
+    PageWrapper,
   },
   data() {
     return {
@@ -29,6 +32,13 @@ export default {
   methods: {
     createTodo(todo) {
       this.todos.push(todo);
+    },
+    removeTodo(todo) {
+      this.todos = this.todos.filter((t) => t.id !== todo.id);
+    },
+    changePage(number) {
+      this.page = number;
+      this.fetchTodos();
     },
     async fetchTodos() {
       try {
@@ -73,5 +83,9 @@ export default {
 }
 .app {
   padding: 30px;
+}
+.page_wrapper {
+  display: flex;
+  margin-top: 15px;
 }
 </style>

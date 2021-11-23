@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <h3>todos</h3>
-    <todo v-for="todo in todos" :todo="todo" :key="todo.id" />
+  <div class="tds">
+    <h3>Todos</h3>
+    <todo
+      v-for="todo in todos"
+      :todo="todo"
+      :key="todo.id"
+      @remove="$emit('remove', todo)"
+    />
   </div>
 </template>
 
@@ -20,4 +25,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.tds {
+  margin-top: 15px;
+}
+</style>
