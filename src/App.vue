@@ -1,36 +1,24 @@
 <template>
   <div class="app">
-    <child />
-    <div>
-      <h1>Counter:{{ counter }}</h1>
-      <button @click="decrement">Decrement</button>
-      <button @click="increment">Increment</button>
-    </div>
-    <div>
-      <h1>The number of elements:{{ incorrectLength }}</h1>
-      <div v-for="elem in list" :key="elem.id">{{ elem }}</div>
-      <button @click="addElement">Add element</button>
-    </div>
-    <div>
-      <todo-form @create="createTodo" />
-      <todo-list :todos="todos" />
-    </div>
+    <counter />
+    <list />
+    <todo-form @create="createTodo" />
+    <todo-list :todos="todos" />
   </div>
 </template>
 
 <script>
+import Counter from "@/components/Counter";
+import List from "@/components/List";
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
-import Child from "@/components/Child";
-import CountMixin from "@/mixins/CountMixin";
-import ListMixin from "@/mixins/ListMixin";
 
 export default {
-  mixins: [CountMixin, ListMixin],
   components: {
+    Counter,
+    List,
     TodoForm,
     TodoList,
-    Child,
   },
   data() {
     return {
@@ -39,17 +27,6 @@ export default {
         { id: 1, title: "todo 2", completed: "false" },
         { id: 2, title: "todo 3", completed: "true" },
       ],
-      user: {
-        name: "alarmshv",
-        address: {
-          street: "",
-        },
-      },
-    };
-  },
-  provide() {
-    return {
-      user: this.user,
     };
   },
   methods: {
