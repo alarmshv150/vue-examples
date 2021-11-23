@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Child from "@/components/Child";
+import Child from "@/examples/Child";
 export default {
   components: { Child },
   data() {

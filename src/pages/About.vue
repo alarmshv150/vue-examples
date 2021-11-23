@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Examples of theory</h1>
+    <h1>Basic theory</h1>
   </div>
 </template>
 

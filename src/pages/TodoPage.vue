@@ -2,7 +2,11 @@
   <div>
     <h1>Page with todos</h1>
     <todo-form @create="createTodo" />
-    <todo-list :todos="todos" @remove="removeTodo" v-if="!isTodosLoading" />
+    <todo-list
+      :todos="sortedAndFilteredTodos"
+      @remove="removeTodo"
+      v-if="!isTodosLoading"
+    />
     <div v-else>Loading...</div>
     <page-wrapper :total="total" :page="page" @change="changePage" />
   </div>
@@ -67,6 +71,16 @@ export default {
         console.log(newValue);
       },
       deep: true,
+    },
+  },
+  computed: {
+    filteredTodos() {
+      return this.todos.filter((todo) => todo.completed === false);
+    },
+    sortedAndFilteredTodos() {
+      return this.filteredTodos.sort(
+        (todo1, todo2) => todo2.title.length - todo1.title.length
+      );
     },
   },
   mounted() {

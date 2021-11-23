@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Element from "@/components/Element";
+import Element from "@/examples/Element";
 import ListMixin from "@/mixins/ListMixin";
 
 export default {

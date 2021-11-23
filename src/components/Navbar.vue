@@ -8,7 +8,7 @@
       <button class="navbar__btn" @click="$router.push('/composition')">
         Composition
       </button>
-      <button class="navbar__btn" @clcik="$router.push('/examples')">
+      <button class="navbar__btn" @click="$router.push('/examples')">
         Examples
       </button>
     </div>

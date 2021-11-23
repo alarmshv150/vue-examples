@@ -1,5 +1,5 @@
 <template>
-  <div class="tds">
+  <div class="todos" v-if="todos.length > 0">
     <h3>Todos</h3>
     <todo
       v-for="todo in todos"
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.tds {
+.todos {
   margin-top: 15px;
 }
 </style>
