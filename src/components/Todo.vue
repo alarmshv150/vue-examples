@@ -5,7 +5,9 @@
     <div><strong>Completed:</strong>{{ todo.completed }}</div>
     <div class="todo__btns">
       <button class="btn__rmv" @click="$emit('remove', todo)">delete</button>
-      <button class="btn__td" @click="$router.push()">todo</button>
+      <button class="btn__td" @click="$router.push(`/todo/${todo.id}`)">
+        todo
+      </button>
     </div>
   </div>
 </template>
