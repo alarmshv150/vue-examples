@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const todoModule = {
-  /* data analog */
   state: () => ({
     todos: [],
     page: 1,
@@ -9,14 +8,13 @@ export const todoModule = {
     total: 0,
     isTodosLoading: false,
   }),
-  /* computed props analog */
   getters: {
     filteredTodos(state) {
       return state.todos.filter((todo) => todo.computed === false);
     },
     sortedAndFilteredTodos(getters) {
       return getters.filteredTodos.sort(
-        (todo1, todo2) => todo2.title.legth - todo1.title.length
+        (todo1, todo2) => todo2.title.length - todo1.title.length
       );
     },
   },
@@ -31,33 +29,33 @@ export const todoModule = {
       state.page = page;
     },
     setTotal(state, total) {
-      state, (total = total);
+      state.total = total;
     },
   },
-  /* asyncrony */
   actions: {
-    async fetchTodos() {
+    async fetchTodos({ state, commit }) {
       try {
-        const response = await get(
+        commit('setLoading', true);
+        const response = await axios.get(
           "https://jsonplaceholder.typicode.com/todos",
           {
             params: {
               _page: state.page,
               _limit: state.limit,
-            },
+            }
           }
         );
         commit(
-          "setTotal",
+          'setTotal',
           Math.ceil(response.headers["x-total-count"] / state.limit)
         );
-        commit("setTodos", response.data);
-      } catch (error) {
-        console.log("error");
+        commit('setTodos', response.data);
+      } catch (e) {
+        console.log(e);
       } finally {
-        commit("setLoading", false);
+        commit('setLoading', false);
       }
     },
   },
+  namespaced: true,
 };
-
