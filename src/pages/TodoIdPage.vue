@@ -9,24 +9,9 @@
 </template>
 
 <script>
-import axios from "axios";
+import FetchIdMixin from "@/mixins/FetchIdMixin";
 export default {
-  data() {
-    return {
-      todo: {},
-    };
-  },
-  methods: {
-    async fetchTodoById(id) {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos/" + id
-      );
-      this.todo = response.data;
-    },
-  },
-  mounted() {
-    this.fetchTodoById(this.$route.params.id);
-  },
+  mixins: [FetchIdMixin],
 };
 </script>
 
