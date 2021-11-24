@@ -6,7 +6,7 @@
     <div class="todo__btns">
       <button class="btn__dl" @click="$emit('remove', todo)">delete</button>
       <button
-        class="btn__td"
+        class="btn__info"
         @click="$router.push(`/todo/${todo.id}`)"
         v-if="todo.id < 201"
       >
@@ -43,7 +43,7 @@ export default {
   padding: 10px;
   width: 70px;
 }
-.btn__td {
+.btn__info {
   border: 2px solid rgb(35, 19, 182);
   margin: 14px 10px;
   padding: 10px;

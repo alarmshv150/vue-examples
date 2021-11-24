@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent class="form">
       <h4>create todo</h4>
-      <my-input v-model="todo.title" type="text" placeholder="title" />
+      <my-input v-focus v-model="todo.title" type="text" placeholder="title" />
       <my-input v-model="todo.completed" type="text" placeholder="completed?" />
       <button @click="createTodo" class="btn">create</button>
     </form>
