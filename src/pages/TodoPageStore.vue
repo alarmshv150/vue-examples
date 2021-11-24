@@ -14,9 +14,9 @@
 
 <script>
 import { mapState, mapGetters, mapActions, mapMutations } from "vuex";
-import TodoForm from "@/components/TodoForm";
-import TodoList from "@/components/TodoList";
-import PageWrapper from "@/components/PageWrapper";
+import TodoForm from "@/components/User/TodoForm";
+import TodoList from "@/components/User/TodoList";
+import PageWrapper from "@/components/User/PageWrapper";
 
 export default {
   components: {

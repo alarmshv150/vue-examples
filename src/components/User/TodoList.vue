@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Todo from "@/components/Todo";
+import Todo from "@/components/User/Todo";
 
 export default {
   components: { Todo },

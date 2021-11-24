@@ -4,9 +4,13 @@
     <div><strong>Title:</strong>{{ todo.title }}</div>
     <div><strong>Completed:</strong>{{ todo.completed }}</div>
     <div class="todo__btns">
-      <button class="btn__rmv" @click="$emit('remove', todo)">delete</button>
-      <button class="btn__td" @click="$router.push(`/todo/${todo.id}`)">
-        todo
+      <button class="btn__dl" @click="$emit('remove', todo)">delete</button>
+      <button
+        class="btn__td"
+        @click="$router.push(`/todo/${todo.id}`)"
+        v-if="todo.id < 201"
+      >
+        info
       </button>
     </div>
   </div>
@@ -33,14 +37,16 @@ export default {
 .todo__btns {
   display: flex;
 }
-.btn__rmv {
+.btn__dl {
   border: 2px solid rgb(242, 7, 7);
-  margin: 10px 4px;
+  margin: 14px 0px;
   padding: 10px;
+  width: 70px;
 }
 .btn__td {
   border: 2px solid rgb(35, 19, 182);
-  margin: 10px 4px;
+  margin: 14px 10px;
   padding: 10px;
+  width: 70px;
 }
 </style>

@@ -7,16 +7,16 @@
       @remove="removeTodo"
       v-if="!isTodosLoading"
     />
-    <div v-else>Loading...</div>
+    <div v-else><h1>Loading...</h1></div>
     <page-wrapper :total="total" :page="page" @change="changePage" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import TodoForm from "@/components/TodoForm";
-import TodoList from "@/components/TodoList";
-import PageWrapper from "@/components/PageWrapper";
+import TodoForm from "@/components/User/TodoForm";
+import TodoList from "@/components/User/TodoList";
+import PageWrapper from "@/components/User/PageWrapper";
 
 export default {
   components: {
@@ -75,11 +75,13 @@ export default {
   },
   computed: {
     filteredTodos() {
-      return this.todos.filter((todo) => todo.completed === false);
+      return this.todos.filter(
+        (todo) => todo.completed === false || todo.completed === "false"
+      );
     },
     sortedAndFilteredTodos() {
       return this.filteredTodos.sort(
-        (todo1, todo2) => todo2.title.length - todo1.title.length
+        (td1, td2) => td1.title.length - td2.title.length
       );
     },
   },
